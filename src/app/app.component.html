@@ -1,0 +1,15 @@
+<GridLayout rows="*, *" marginTop="20" padding="10">
+  <GridLayout row="0" rows="auto, *">
+    <Label row="0" text="WebView" fontSize="18" fontWeight="bold"></Label>
+    <Webview
+      src="~/html/sample.html"
+      marginTop="10"
+      (loaded)="onWebViewLoaded($event)"
+      row="1"
+    ></Webview>
+  </GridLayout>
+  <StackLayout row="1">
+    <Label text="Message from webview" fontSize="18" fontWeight="bold"></Label>
+    <Label [text]="message" fontSize="14" textWrap="true"></Label>
+  </StackLayout>
+</GridLayout>

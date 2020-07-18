@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=0"
+    />
+    <title>Sample</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      textarea {
+        width: 100%;
+        display: block;
+        height: 200px;
+      }
+
+      button {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+        height: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="message" placeholder="Type your message here"></textarea>
+    <button onclick="postMessage()">Post Message</button>
+  </body>
+  <script>
+    function postMessage() {
+      var message = document.getElementById("message").value;
+
+      if (window.Android) {
+        window.Android.postMessage(message);
+      } else if (
+        window.webkit &&
+        window.webkit.messageHandlers.IOS &&
+        window.webkit.messageHandlers.IOS.postMessage
+      ) {
+        window.webkit.messageHandlers.IOS.postMessage(message);
+      }
+    }
+  </script>
+</html>
